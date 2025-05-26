@@ -1,10 +1,8 @@
 const btn = document.getElementById("langBtn");
 const menu = document.getElementById("langMenu");
-const film = document.getElementById("film")
+const film = document.getElementById("film");
 
-function toggleMenu() {
-    menu.classList.toggle("hidden");
-}
+function toggleMenu() { menu.classList.toggle("hidden"); };
 
 function setLang(lang) {
     let img;
@@ -17,15 +15,18 @@ function setLang(lang) {
     menu.classList.add("hidden");
 }
 
+function navigate(id) {
+    location.href = `html/details.htm?id=${id}`;
+}
+
 async function Films() {
     let data = await showFilms();
 
+    console.log(data);
     data.forEach(item => {
-        console.log(item.image);
-
         let date = new Date(item.firstScreeningDate);
         let day = date.getDate();
-        let month = date.getMonth() + 1; 
+        let month = date.getMonth() + 1;
         let year = date.getFullYear();
 
         if (day < 10) day = '0' + day;
@@ -35,7 +36,7 @@ async function Films() {
         let subtitles = item.subtitles.join(', ');
 
         film.innerHTML += `
-            <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg">
+            <div onclick="navigate('${item.id}')" class="bg-gray-900 cursor-pointer rounded-2xl overflow-hidden shadow-lg">
                 <img src="https://new.parkcinema.az/_next/image?url=https%3A%2F%2Fnew.parkcinema.az%2Fapi%2Ffile%2FgetFile%2F${item.image}&w=640&q=75" alt="movie" class="w-full h-80 object-cover">
                 <div class="p-4">
                     <h2 class="text-lg font-semibold">${item.name}</h2>
