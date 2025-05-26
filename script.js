@@ -35,7 +35,7 @@ async function Films() {
         let subtitles = item.subtitles.join(', ');
 
         film.innerHTML += `
-            <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+            <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg">
                 <img src="https://new.parkcinema.az/_next/image?url=https%3A%2F%2Fnew.parkcinema.az%2Fapi%2Ffile%2FgetFile%2F${item.image}&w=640&q=75" alt="movie" class="w-full h-80 object-cover">
                 <div class="p-4">
                     <h2 class="text-lg font-semibold">${item.name}</h2>
