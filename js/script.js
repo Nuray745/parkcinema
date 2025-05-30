@@ -35,7 +35,8 @@ async function Films() {
         let formattedDate = `${day}.${month}.${year}`;
         let subtitles = item.subtitles.join(', ');
 
-        film.innerHTML += `
+        return (
+            film.innerHTML += `
             <div onclick="navigate('${item.id}')" class="bg-gray-900 cursor-pointer rounded-2xl overflow-hidden shadow-lg">
                 <img src="https://new.parkcinema.az/_next/image?url=https%3A%2F%2Fnew.parkcinema.az%2Fapi%2Ffile%2FgetFile%2F${item.image}&w=640&q=75" alt="movie" class="w-full h-80 object-cover">
                 <div class="p-4">
@@ -47,7 +48,8 @@ async function Films() {
                     </div>
                 </div>
             </div>
-        `;
+        `
+        )
     });
 }
 Films();
